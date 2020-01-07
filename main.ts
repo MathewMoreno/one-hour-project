@@ -24,57 +24,79 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy4, function (sprite, otherSprite) {
+    mySprite.destroy()
+    game.over(false, effects.slash)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    game.over(true, effects.slash)
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy3, function (sprite, otherSprite) {
     zombie3.destroy()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy2, function (sprite, otherSprite) {
     zombie2.destroy()
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy2, function (sprite, otherSprite) {
+    mySprite.destroy()
+    game.over(false, effects.slash)
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     zombie1.destroy()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    projectile = sprites.createProjectileFromSprite(img`
+    if (info.score() > 0) {
+        info.changeScoreBy(-1)
+        projectile = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . c c b c c c c c . . . . . 
-. . . c c b c c c c c c . . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c . . . . 
 . . . c c b c c c c c . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-`, mySprite, 100, 0)
-    projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, mySprite, 300, 0)
+        projectile2 = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . c c c c c b c c . . . 
-. . . . c c c c c c b c c . . . 
-. . . c c c c c c c b c c . . . 
-. . . c c c c c c c b c c . . . 
-. . . . c c c c c c b c c . . . 
 . . . . . c c c c c b c c . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-`, mySprite, -100, 0)
-    pause(5000)
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, mySprite, -300, 0)
+        pause(2000)
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     mySprite.destroy()
     game.over(false, effects.slash)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy3, function (sprite, otherSprite) {
+    mySprite.destroy()
+    game.over(false, effects.slash)
+})
+info.onCountdownEnd(function () {
+    mySprite.destroy()
+    game.over(false, effects.blizzard)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy4, function (sprite, otherSprite) {
     zombie4.destroy()
@@ -109,6 +131,7 @@ tiles.setTilemap(tiles.createTilemap(
             [myTiles.tile0,sprites.castle.tilePath5,sprites.castle.tilePath1,sprites.castle.tilePath4,sprites.castle.tilePath3,sprites.castle.tilePath9,sprites.castle.tilePath7,sprites.castle.tilePath8,sprites.castle.tilePath2,sprites.castle.tilePath6,sprites.builtin.forestTiles0,sprites.castle.tileDarkGrass2,sprites.castle.tileDarkGrass3,sprites.castle.tileDarkGrass1,sprites.castle.tileGrass1,sprites.castle.tileGrass2,sprites.castle.tileGrass3,sprites.builtin.forestTiles7,sprites.builtin.forestTiles15],
             TileScale.Sixteen
         ))
+info.setScore(3)
 mySprite = sprites.create(img`
 . . . . . e e e e e . . . . . . 
 . . . . 3 3 2 3 e e e . . . . . 
@@ -128,8 +151,9 @@ e e e d . 2 2 2 2 2 2 . e d e e
 . . . . . 8 . . . . 8 . . . . . 
 `, SpriteKind.Player)
 mySprite.setPosition(230, 250)
-controller.moveSprite(mySprite)
+controller.moveSprite(mySprite, 70, 70)
 scene.cameraFollowSprite(mySprite)
+mySprite.say("I have to get to the tunnel", 5000)
 zombie1 = sprites.create(img`
 . . . . . e e e e e . . . . . . 
 . . . . 7 7 2 7 e e e . . . . . 
@@ -149,7 +173,7 @@ zombie1 = sprites.create(img`
 . . . . . c . . . . c . . . . . 
 `, SpriteKind.Enemy)
 zombie1.setPosition(14, 200)
-zombie1.follow(mySprite, 75)
+zombie1.follow(mySprite, 100)
 zombie2 = sprites.create(img`
 . . . . . e e e e e . . . . . . 
 . . . . 7 7 2 7 e e e . . . . . 
@@ -189,7 +213,7 @@ zombie3 = sprites.create(img`
 . . . . . c . . . . c . . . . . 
 `, SpriteKind.enemy3)
 zombie3.setPosition(200, 90)
-zombie3.follow(mySprite, 75)
+zombie3.follow(mySprite, 50)
 zombie4 = sprites.create(img`
 . . . . . e e e e e . . . . . . 
 . . . . 7 7 2 7 e e e . . . . . 
@@ -208,8 +232,27 @@ zombie4 = sprites.create(img`
 . . . . . c . . . . c . . . . . 
 . . . . . c . . . . c . . . . . 
 `, SpriteKind.enemy4)
-zombie4.setPosition(10, 50)
-zombie4.follow(mySprite, 75)
+zombie4.setPosition(150, 10)
+zombie4.follow(mySprite, 25)
+let End = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, SpriteKind.Food)
+End.setPosition(245, 10)
 tiles.setWallAt(tiles.getTileLocation(3, 12), true)
 tiles.setWallAt(tiles.getTileLocation(4, 12), true)
 tiles.setWallAt(tiles.getTileLocation(5, 12), true)
@@ -277,39 +320,4 @@ tiles.setWallAt(tiles.getTileLocation(12, 2), true)
 tiles.setWallAt(tiles.getTileLocation(13, 2), true)
 tiles.setWallAt(tiles.getTileLocation(14, 2), true)
 tiles.setWallAt(tiles.getTileLocation(15, 2), true)
-let Bullets = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . c c b c c c c . . . . . . 
-. . . c c b c c c c c c . . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c . . . . 
-. . . c c b c c c c . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Projectile)
-let Bullets2 = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . c c b c c c c . . . . . . 
-. . . c c b c c c c c c . . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c c . . . 
-. . . c c b c c c c c c . . . . 
-. . . c c b c c c c . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Projectile)
+info.startCountdown(30)
