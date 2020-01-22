@@ -33,7 +33,7 @@ function Destroy () {
     game.over(false, effects.slash)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    info.changeScoreBy(1)
+    info.player2.changeScoreBy(1)
 })
 function Villains () {
     zombie1 = sprites.create(img`
@@ -290,19 +290,22 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     Villains()
     info.setScore(3)
     info.startCountdown(30)
-    Walls()
+    Walls2()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy3, function (sprite, otherSprite) {
     zombie3.destroy()
+    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy2, function (sprite, otherSprite) {
     zombie2.destroy()
+    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy2, function (sprite, otherSprite) {
     Destroy()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     zombie1.destroy()
+    info.changeScoreBy(1)
 })
 function Background () {
     tiles.setTilemap(tiles.createTilemap(
@@ -330,8 +333,8 @@ function Background () {
         ))
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (info.score() > 0) {
-        info.changeScoreBy(-1)
+    if (info.player2.score() > 0) {
+        info.player2.changeScoreBy(-1)
         projectile = sprites.createProjectileFromSprite(img`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -340,8 +343,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-. . . c c b c c c c c . . . . . 
-. . . c c b c c c c c . . . . . 
+. . . 9 9 9 9 9 9 9 9 . . . . . 
+. . . 9 9 9 9 9 9 9 9 . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -358,8 +361,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-. . . . . c c c c c b c c . . . 
-. . . . . c c c c c b c c . . . 
+. . . . . 9 9 9 9 9 9 9 9 . . . 
+. . . . . 9 9 9 9 9 9 9 9 . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
@@ -379,7 +382,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy3, function (sprite, otherS
     mySprite.destroy()
     game.over(false, effects.slash)
 })
-function Walls () {
+// Makes a wall
+function Walls2 () {
     tiles.setWallAt(tiles.getTileLocation(3, 12), true)
     tiles.setWallAt(tiles.getTileLocation(4, 12), true)
     tiles.setWallAt(tiles.getTileLocation(5, 12), true)
@@ -455,8 +459,8 @@ function Hero () {
 . . . . 3 3 3 3 3 e e . . . . . 
 . . . . . 3 3 3 3 3 3 . . . . . 
 . . . . . . 3 3 3 3 . . . . . . 
-e e e d . 2 2 2 2 2 2 . d e e e 
-. 3 e 3 . 2 2 2 2 2 2 . 3 e 3 . 
+4 4 4 d . 2 2 2 2 2 2 . d 4 4 4 
+. 3 4 3 . 2 2 2 2 2 2 . 3 4 3 . 
 . . . . 3 2 2 2 2 2 2 3 . . . . 
 . . . . . 2 2 2 2 2 2 . . . . . 
 . . . . . 8 2 2 2 2 2 . . . . . 
@@ -477,6 +481,7 @@ info.onCountdownEnd(function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy4, function (sprite, otherSprite) {
     zombie4.destroy()
+    info.changeScoreBy(1)
 })
 let projectile2: Sprite = null
 let projectile: Sprite = null
@@ -491,6 +496,7 @@ game.splash("Level 1")
 Background()
 Hero()
 Villains()
-info.setScore(3)
+info.player2.setScore(3)
 info.startCountdown(30)
-Walls()
+Walls2()
+info.player1.setScore(0)
