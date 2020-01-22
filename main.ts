@@ -288,9 +288,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     scene.setBackgroundColor(15)
     Hero()
     Villains()
-    info.setScore(3)
+    info.player2.setScore(3)
     info.startCountdown(30)
-    Walls2()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy3, function (sprite, otherSprite) {
     zombie3.destroy()
@@ -383,7 +382,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy3, function (sprite, otherS
     game.over(false, effects.slash)
 })
 // Makes a wall
-function Walls2 () {
+function Walls () {
     tiles.setWallAt(tiles.getTileLocation(3, 12), true)
     tiles.setWallAt(tiles.getTileLocation(4, 12), true)
     tiles.setWallAt(tiles.getTileLocation(5, 12), true)
@@ -496,7 +495,9 @@ game.splash("Level 1")
 Background()
 Hero()
 Villains()
+// Creates separate score
 info.player2.setScore(3)
 info.startCountdown(30)
-Walls2()
 info.player1.setScore(0)
+Walls()
+mySprite.say(":(")
