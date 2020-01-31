@@ -188,6 +188,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
     Villains()
     info.player2.setScore(3)
     info.startCountdown(30)
+    game.over(true)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy3, function (sprite, otherSprite) {
     zombie3.destroy()
