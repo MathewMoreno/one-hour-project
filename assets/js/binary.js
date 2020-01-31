@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v0.16.26/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.1","target":"arcade","targetVersion":"0.16.26","repo":"mathewmoreno/one-hour-project"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v0.16.26/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"1.0.0","target":"arcade","targetVersion":"0.16.26","repo":"mathewmoreno/one-hour-project"}
 // total=1662817 new=8.82% cached=86.34% other=4.84%
 (function (ectx) {
 'use strict';
@@ -465,7 +465,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P60610(s) {
+function _main___P60787(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1080,14 +1080,14 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P60610.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
-_main___P60610.continuations = [  ]
-_main___P60610.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P60787.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P60787.continuations = [  ]
+_main___P60787.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
 
-function _main___P60610_mk(s) {
+function _main___P60787_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P60610, depth: s.depth + 1,
+        parent: s, fn: _main___P60787, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -54002,5 +54002,5 @@ const effects_SceneAnchor__C40440_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["enemy2___59499","enemy3___59502","enemy4___59505","tile0___59508","zombie3___59560","zombie2___59548","zombie1___59536","projectile___59731","mySprite___59524","projectile2___59738","zombie4___59572","End___59584"])
 
-return _main___P60610
+return _main___P60787
 })
