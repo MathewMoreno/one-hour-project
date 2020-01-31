@@ -25,8 +25,7 @@ namespace myTiles {
 `
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy4, function (sprite, otherSprite) {
-    mySprite.destroy()
-    game.over(false, effects.slash)
+    info.changeLifeBy(-1)
 })
 function Destroy () {
     mySprite.destroy()
@@ -374,12 +373,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    mySprite.destroy()
-    game.over(false, effects.slash)
+    info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy3, function (sprite, otherSprite) {
-    mySprite.destroy()
-    game.over(false, effects.slash)
+    info.changeLifeBy(-1)
 })
 // Makes a wall
 function Walls () {
@@ -475,12 +472,14 @@ function Hero () {
     scene.cameraFollowSprite(mySprite)
 }
 info.onCountdownEnd(function () {
-    mySprite.destroy()
-    game.over(false, effects.dissolve)
+    info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.enemy4, function (sprite, otherSprite) {
     zombie4.destroy()
     info.changeScoreBy(1)
+})
+info.onLifeZero(function () {
+    game.over(false, effects.slash)
 })
 let projectile2: Sprite = null
 let projectile: Sprite = null
@@ -499,5 +498,6 @@ Villains()
 info.player2.setScore(3)
 info.startCountdown(30)
 info.player1.setScore(0)
+info.setLife(1)
 Walls()
-mySprite.say(":(")
+mySprite.say("Ahhh Zombie!!!", 500)
