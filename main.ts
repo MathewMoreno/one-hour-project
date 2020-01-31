@@ -158,107 +158,6 @@ e e e d . 2 2 2 2 2 2 . d e e e
     controller.moveSprite(mySprite, 70, 70)
     scene.cameraFollowSprite(mySprite)
 }
-function Villains_3 () {
-    zombie1 = sprites.create(img`
-. . . . . e e e e e . . . . . . 
-. . . . 7 7 2 7 e e e . . . . . 
-. . . . 7 7 7 7 7 e e . . . . . 
-. . . . . 7 7 7 7 7 7 . . . . . 
-. . . . . . 7 7 7 7 . . . . . . 
-. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
-. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
-. . . 7 7 4 4 4 4 7 4 7 7 . . . 
-. . . . . 4 7 7 4 4 4 . . . . . 
-. . . . . 4 7 4 4 4 4 . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-`, SpriteKind.Enemy)
-    zombie1.setPosition(14, 200)
-    zombie1.follow(mySprite, 100)
-    zombie2 = sprites.create(img`
-. . . . . e e e e e . . . . . . 
-. . . . 7 7 2 7 e e e . . . . . 
-. . . . 7 7 7 7 7 e e . . . . . 
-. . . . . 7 7 7 7 7 7 . . . . . 
-. . . . . . 7 7 7 7 . . . . . . 
-. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
-. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
-. . . 7 7 4 4 4 4 7 4 7 7 . . . 
-. . . . . 4 7 7 4 4 4 . . . . . 
-. . . . . 4 7 4 4 4 4 . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-`, SpriteKind.enemy2)
-    zombie2.setPosition(230, 100)
-    zombie2.follow(mySprite, 75)
-    zombie3 = sprites.create(img`
-. . . . . e e e e e . . . . . . 
-. . . . 7 7 2 7 e e e . . . . . 
-. . . . 7 7 7 7 7 e e . . . . . 
-. . . . . 7 7 7 7 7 7 . . . . . 
-. . . . . . 7 7 7 7 . . . . . . 
-. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
-. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
-. . . 7 7 4 4 4 4 7 4 7 7 . . . 
-. . . . . 4 7 7 4 4 4 . . . . . 
-. . . . . 4 7 4 4 4 4 . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-`, SpriteKind.enemy3)
-    zombie3.setPosition(200, 90)
-    zombie3.follow(mySprite, 50)
-    zombie4 = sprites.create(img`
-. . . . . e e e e e . . . . . . 
-. . . . 7 7 2 7 e e e . . . . . 
-. . . . 7 7 7 7 7 e e . . . . . 
-. . . . . 7 7 7 7 7 7 . . . . . 
-. . . . . . 7 7 7 7 . . . . . . 
-. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
-. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
-. . . 7 7 4 4 4 4 7 4 7 7 . . . 
-. . . . . 4 7 7 4 4 4 . . . . . 
-. . . . . 4 7 4 4 4 4 . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c c c c c c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-. . . . . c . . . . c . . . . . 
-`, SpriteKind.enemy4)
-    zombie4.setPosition(150, 10)
-    zombie4.follow(mySprite, 25)
-    End = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . f f f f f f f f f f . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.Food)
-    End.setPosition(245, 10)
-}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     game.splash("Level 2", "Caves")
     tiles.setTilemap(tiles.createTilemap(
@@ -375,6 +274,107 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
+function Villains_3 () {
+    zombie1 = sprites.create(img`
+. . . . . e e e e e . . . . . . 
+. . . . 7 7 2 7 e e e . . . . . 
+. . . . 7 7 7 7 7 e e . . . . . 
+. . . . . 7 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 . . . . . . 
+. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
+. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
+. . . 7 7 4 4 4 4 7 4 7 7 . . . 
+. . . . . 4 7 7 4 4 4 . . . . . 
+. . . . . 4 7 4 4 4 4 . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+`, SpriteKind.Enemy)
+    zombie1.setPosition(14, 200)
+    zombie1.follow(mySprite, 100)
+    zombie2 = sprites.create(img`
+. . . . . e e e e e . . . . . . 
+. . . . 7 7 2 7 e e e . . . . . 
+. . . . 7 7 7 7 7 e e . . . . . 
+. . . . . 7 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 . . . . . . 
+. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
+. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
+. . . 7 7 4 4 4 4 7 4 7 7 . . . 
+. . . . . 4 7 7 4 4 4 . . . . . 
+. . . . . 4 7 4 4 4 4 . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+`, SpriteKind.enemy2)
+    zombie2.setPosition(230, 100)
+    zombie2.follow(mySprite, 75)
+    zombie3 = sprites.create(img`
+. . . . . e e e e e . . . . . . 
+. . . . 7 7 2 7 e e e . . . . . 
+. . . . 7 7 7 7 7 e e . . . . . 
+. . . . . 7 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 . . . . . . 
+. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
+. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
+. . . 7 7 4 4 4 4 7 4 7 7 . . . 
+. . . . . 4 7 7 4 4 4 . . . . . 
+. . . . . 4 7 4 4 4 4 . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+`, SpriteKind.enemy3)
+    zombie3.setPosition(200, 90)
+    zombie3.follow(mySprite, 50)
+    zombie4 = sprites.create(img`
+. . . . . e e e e e . . . . . . 
+. . . . 7 7 2 7 e e e . . . . . 
+. . . . 7 7 7 7 7 e e . . . . . 
+. . . . . 7 7 7 7 7 7 . . . . . 
+. . . . . . 7 7 7 7 . . . . . . 
+. 7 7 . . 4 4 4 4 4 4 . . . 7 . 
+. . 7 7 . 4 4 4 7 7 4 . 7 7 7 . 
+. . . 7 7 4 4 4 4 7 4 7 7 . . . 
+. . . . . 4 7 7 4 4 4 . . . . . 
+. . . . . 4 7 4 4 4 4 . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+. . . . . c . . . . c . . . . . 
+`, SpriteKind.enemy4)
+    zombie4.setPosition(150, 10)
+    zombie4.follow(mySprite, 25)
+    End = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . f f f f f f f f f f . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, SpriteKind.Food)
+    End.setPosition(245, 10)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.enemy3, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
 })
